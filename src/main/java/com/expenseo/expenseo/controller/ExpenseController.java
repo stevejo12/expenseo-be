@@ -12,6 +12,11 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
+    @GetMapping("/getUserExpense/{id}")
+    public ExpenseDTO getExpenseByID(@PathVariable("id") int id) {
+        return expenseService.getExpenseByID(id);
+    }
+
     @PostMapping("/saveExpense")
     public ExpenseDTO saveExpense(@RequestBody ExpenseDTO expenseDTO) {
         return expenseService.saveExpense(expenseDTO);

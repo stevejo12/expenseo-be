@@ -6,14 +6,20 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+enum ExpenseType {
+    Income,
+    Expense
+}
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class ExpenseDTO {
     private int id;
     private String description;
-    private Number amount;
+    private Float amount;
     private Date date;
-    private String category;
-    private String categoryLogo;
+    private ExpenseType type;
+    private int categoryID;
+    private int userID;
 }
