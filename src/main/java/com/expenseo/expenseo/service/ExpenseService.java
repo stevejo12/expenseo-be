@@ -6,8 +6,11 @@ import com.expenseo.expenseo.repository.ExpenseRepository;
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +21,9 @@ public class ExpenseService {
 
     @Autowired
     private ModelMapper modelMapper;
+    public ResponseEntity<List<Expense>> getAllUserExpenses(int userID) {
+        return new ResponseEntity<>(expenseRepository.getExpensesByUserID(userID), HttpStatus.OK);
+    }
 
     public ExpenseDTO getExpenseByID(int id) {
         Optional<Expense> userExpense = expenseRepository.findById(id);
